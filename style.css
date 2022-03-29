@@ -28,7 +28,7 @@ body {
   justify-content: center;
   align-items: center;
   position: relative;
-   cursor: pointer;
+  cursor: pointer;
 }
 
 .cell:first-child,
@@ -55,38 +55,14 @@ body {
   cursor: not-allowed;
 }
 
-.cell.x::before, 
-.cell.x::after {
-  content: '';
-  position: absolute;
-  width: calc(var(--mark-size) * 0.15);
-  height: var(--mark-size);
-  background-color: black;
+.cell.x {
+  background-image: url(/x-symbol-svgrepo-com.svg);
+  background-size: 80%;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.cell.x::before {
-  transform: rotate(45deg);
-}
-
-.cell.x::after {
-  transform: rotate(-45deg);
-}
-
-.cell.cirle::before, 
-.cell.cirle::after {
-  content: '';
-  position: absolute;
-  border-radius: 50%;
-}
-
-.cell.cirle::before {
-  width: var(--mark-size);
-  height: var(--mark-size);
-  background-color: black;
-}
-
-.cell.cirle::after {
-  width: calc(var(--mark-size) * 0.7);
-  height: calc(var(--mark-size) * 0.7);
-  background-color: white;
+.cell.o {
+  background-image: url(/Circle-image.svg);
+  background-size: cover;
 }
