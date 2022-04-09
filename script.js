@@ -1,4 +1,3 @@
-
 const cell = document.querySelectorAll('.cell');
 cell.forEach(el => {
   el.addEventListener('click', play);
@@ -21,6 +20,7 @@ const WIN_COMB = [
 ];
 
 var pt = "x";
+var playerName = "Player 1";
 
 function play(e) {
   if ( this.classList.contains('x') || this.classList.contains('o') ) {
@@ -35,14 +35,23 @@ function play(e) {
 };
 
 function turn() {
-  msg1.innerHTML = `Turn: <span id="upc">${pt}</span>`;
+  if (playerName === "Player 1") {
+    msg1.innerHTML = `Turn: <span id="upc">${pt}</span>`;  
+  } else if (pt === "x") {
+    msg1.innerHTML = `Turn: ${playerName}`;
+  } else {
+    msg1.innerHTML = "Turn: Computer";
+  }
 };
 
 function gameover() {
   if (checkWin(pt)) {
-    msg2.innerHTML = `<span id="upc">${pt}</span> wins!`;
+    if (playerName === "Player 1") {
+      msg2.innerHTML = `<span id="upc">${pt}</span> wins!`;
+    } else {
+      msg2.innerHTML = `${playerName} wins!`;
+    }
     msg[0].classList.add('show');
-    console.log(pt, "wins!");
   }
 };
 
@@ -56,9 +65,17 @@ function checkWin(pt) {
 
 function restart() {
   msg[0].classList.remove('show');
-  console.log("restart..");
   cell.forEach(el => {
     el.classList.remove('x');
     el.classList.remove('o');
   });
 };
+
+function getPlayerName() {
+  if (playerName === "Player 1") {
+    playerName = prompt("What's your Name?");
+  }
+  turn();
+};
+
+getPlayerName();
